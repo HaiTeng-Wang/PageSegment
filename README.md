@@ -7,6 +7,10 @@ PageSegment
 
 文件，代码少，易于自己修改成适合自己项目的工程控件。`TabBar`可显示小红点。
 
+---
+
+![效果图](https://raw.githubusercontent.com/HaiTeng-Wang/PageSegment/master/PageSegment.gif)
+
 
 Features
 --------
