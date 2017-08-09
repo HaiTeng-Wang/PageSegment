@@ -1,7 +1,10 @@
 PageSegment
 ==
 
-> `OC`语言编写。基于[PagerTab](https://github.com/ming1016/PagerTab)基础上进行修改。
+[![License](https://img.shields.io/cocoapods/l/TabPageViewController.svg?style=flat)](http://cocoapods.org/pods/PageSegment)
+[![Language](https://img.shields.io/badge/language-oc-orange.svg?style=flat)](https://developer.apple.com/oc)
+
+> 基于[PagerTab](https://github.com/ming1016/PagerTab)基础上进行修改。
 
 原贡献者，貌似消失于`Github`界，此控件也没有持续更新。所有放到这里希望大家可以一起`pull requests `。
 
