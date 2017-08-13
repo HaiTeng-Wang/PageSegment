@@ -56,12 +56,9 @@ Use
 
 **init**
 ```Objective-C
-- (SMPagerTabView *)segmentView {
+- (PageSegmentView *)segmentView {
     if (!_segmentView) {
-        self.segmentView = [[SMPagerTabView alloc]initWithFrame:CGRectMake(0,
-                                                                           self.topLayoutGuide.length,
-                                                                           self.view.width,
-                                                                           self.view.height - self.topLayoutGuide.length)];
+        self.segmentView = [[PageSegmentView alloc]initWithFrame:CGRectMake(0,20,self.view.width,self.view.height - 20)];
         [self.view addSubview:_segmentView];
     }
     return _segmentView;
@@ -79,11 +76,12 @@ self.segmentView.delegate = self;
 ```
 **delegate**
 ```Objective-C
-#pragma mark - DBPagerTabView Delegate
-- (NSUInteger)numberOfPagers:(SMPagerTabView *)view {
+#pragma mark - PageSegmentView Delegate
+
+- (NSUInteger)numberOfPagers:(PageSegmentView *)view {
     return [_allVC count];
 }
-- (UIViewController *)pagerViewOfPagers:(SMPagerTabView *)view indexOfPagers:(NSUInteger)number {
+- (UIViewController *)pagerViewOfPagers:(PageSegmentView *)view indexOfPagers:(NSUInteger)number {
     return _allVC[number];
 }
 
