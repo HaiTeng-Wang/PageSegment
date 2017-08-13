@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "PageSegment"
+  s.name         = "PageSegmentView"
   s.version      = "1.0.0"
   s.summary      = "页面滑动转换器"
   s.description  = "左右滑动切换页面，TabBar支持小红点显示。"
