@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/HaiTeng-Wang/PageSegment.git", :tag => s.version }
   s.source_files = "PageSegment/PageSegment/PageSegmentView/*.{h,m}"
-  s.resource     = 'PageSegment/PageSegment/PageSegmentView/SMPagerTabView.bundle'
+  s.resource     = 'PageSegment/PageSegment/PageSegmentView/PageSegmentView.bundle'
   s.requires_arc = true
 end
