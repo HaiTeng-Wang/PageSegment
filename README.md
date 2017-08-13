@@ -21,6 +21,8 @@ PageSegment
 
 ![效果图](https://raw.githubusercontent.com/HaiTeng-Wang/PageSegment/master/PageSegment.gif)
 
+![xx](/Users/hunter/git/privateGit/PageSegment/PageSegment2.gif)
+
 
 Features
 --------
