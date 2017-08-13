@@ -1,11 +1,9 @@
 PageSegment
 ==
 
-[![License](https://img.shields.io/cocoapods/l/TabPageViewController.svg?style=flat)](http://cocoapods.org/pods/PageSegmentView)
 [![Language](https://img.shields.io/badge/language-oc-orange.svg?style=flat)](https://developer.apple.com/oc)
 
 <p align="left">
-<a href="https://travis-ci.org/xmartlabs/PageSegment"><img src="https://travis-ci.org/xmartlabs/PageSegment.svg?branch=master" alt="Build status" /></a>
 <img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" />
 <a href="https://cocoapods.org/pods/PageSegmentView"><img src="https://img.shields.io/badge/pod-1.0.0-blue.svg" alt="CocoaPods compatible" /></a>
 <a href="https://raw.githubusercontent.com/xmartlabs/PageSegment/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" />
