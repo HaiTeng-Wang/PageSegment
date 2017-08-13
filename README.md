@@ -1,8 +1,17 @@
 PageSegment
 ==
 
-[![License](https://img.shields.io/cocoapods/l/TabPageViewController.svg?style=flat)](http://cocoapods.org/pods/PageSegment)
+[![License](https://img.shields.io/cocoapods/l/TabPageViewController.svg?style=flat)](http://cocoapods.org/pods/PageSegmentView)
 [![Language](https://img.shields.io/badge/language-oc-orange.svg?style=flat)](https://developer.apple.com/oc)
+
+<p align="left">
+<a href="https://travis-ci.org/xmartlabs/PageSegment"><img src="https://travis-ci.org/xmartlabs/PageSegment.svg?branch=master" alt="Build status" /></a>
+<img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" />
+<a href="https://cocoapods.org/pods/PageSegmentView"><img src="https://img.shields.io/badge/pod-1.0.0-blue.svg" alt="CocoaPods compatible" /></a>
+<a href="https://raw.githubusercontent.com/xmartlabs/PageSegment/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" />
+</a>
+<!-- <a href="https://codebeat.co/projects/github-com-xmartlabs-xlpagertabstrip"><img alt="codebeat badge" src="https://codebeat.co/badges/f32c9ad3-0aa1-4b40-a632-9421211bd39e" /></a> -->
+</p>
 
 > 基于[PagerTab](https://github.com/ming1016/PagerTab)基础上进行修改。
 
@@ -17,9 +26,8 @@ PageSegment
 
 Features
 --------
-* 容器视图控制器管理页面，左右滑动进行切换页面控制器
-* 可自定义Size，配置TabBar
-* TabBar支持小红点显示
+* 容器视图控制器管理页面，左右滑动切换页面控制器
+* 可配置TabBar，支持多个BarItem，TabBar支持小红点显示
 * 支持页面边缘右滑返回
 
 Requirements
@@ -33,7 +41,7 @@ Installation with CocoaPods
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'PageSegment', '~> 1.0'
+pod 'PageSegmentView', '~> 1.0'
 end
 ```
 
