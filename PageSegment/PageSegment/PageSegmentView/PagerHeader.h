@@ -12,14 +12,5 @@
 
 #endif /* PagerHeader_h */
 
-// 图片路径
-#define PagerTabSrcName(file)               [@"PageSegmentView.bundle" stringByAppendingPathComponent:file]
-
-#define PagerTabFrameworkSrcName(file)      [@"Frameworks/PageSegment.framework/PageSegmentView.bundle" stringByAppendingPathComponent:file]
-
-#define PagerTabImage(file)                 [UIImage imageNamed:PagerTabSrcName(file)] ? :[UIImage imageNamed:PagerTabFrameworkSrcName(file)]
-
-
-
 #import "UIViewAdditions.h"
 #import "BodyScrollView.h"

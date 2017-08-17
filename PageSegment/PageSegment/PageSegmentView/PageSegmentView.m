@@ -107,7 +107,8 @@
     //tabView
     [self.tabView setBackgroundColor:self.tabBackgroundColor];
 
-    self.shadowImgView.image = PagerTabImage(@"shadowImg");
+    // fix：真机加载不到Bundle中资源图片。 date：20170816
+    self.shadowImgView.image = [self imageNamed:@"shadowImg" BundleNamed:@"PageSegmentView.bundle"];
 
     _isBuildUI = YES;
 
@@ -462,6 +463,22 @@
         self.viewsArray = [[NSMutableArray alloc] init];
     }
     return _viewsArray;
+}
+
+
+/**
+ 获取Bundel资源图片
+
+ @param imgName 图片名称
+ @param bundleName bundle名字
+ @return Img对象
+ */
+- (UIImage *)imageNamed:(NSString *)imgName BundleNamed:(NSString *)bundleName{
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:self.class];
+    NSURL *bundleURL = [[frameworkBundle resourceURL] URLByAppendingPathComponent:bundleName];
+    NSBundle *resourceBundle = [NSBundle bundleWithURL:bundleURL];
+    UIImage *image = [UIImage imageNamed:imgName inBundle:resourceBundle compatibleWithTraitCollection:nil];
+    return image;
 }
 
 @end
