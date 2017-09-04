@@ -187,65 +187,55 @@
 /*!
  * @brief Selected Line跟随移动
  */
-- (void)moveSelectedLineByScrollWithOffsetX:(CGFloat)offsetX {
-    CGFloat textGap = (self.width - self.tabMargin * 2 - self.selectedLine.width * self.tabButtons.count) / (self.tabButtons.count * 2);
-    CGFloat speed = 50;
-    //移动的距离
-    CGFloat movedFloat = self.selectedLineOffsetXBeforeMoving + (offsetX * (textGap + self.selectedLine.width + speed)) / [UIScreen mainScreen].bounds.size.width;
-    //最大右移值
-    CGFloat selectedLineRightBarrier = _selectedLineOffsetXBeforeMoving + textGap * 2 + self.selectedLine.width;
-    //最大左移值
-    CGFloat selectedLineLeftBarrier = _selectedLineOffsetXBeforeMoving - textGap * 2 - self.selectedLine.width;
-    CGFloat selectedLineNewX = 0;
+- (void)moveSelectedLineByScrollWithOffsetX:(CGFloat)movingOffsetX {
 
-    //连续拖动时的处理
-    BOOL isContinueDragging = NO;
-    if (_continueDraggingNumber > 1) {
-        isContinueDragging = YES;
-    }
+    CGFloat selectedLineMaxMovedFloat = 50.0;            // 线移动最大距离
+    CGFloat selectedLineMovedFloat = 0.0;                // 线移动的距离
 
-    if (movedFloat > selectedLineRightBarrier && !isContinueDragging) {
-        //右慢拖动设置拦截
-        selectedLineNewX = selectedLineRightBarrier;
-    } else if (movedFloat < selectedLineLeftBarrier && !isContinueDragging) {
-        //左慢拖动设置的拦截
-        selectedLineNewX = selectedLineLeftBarrier;
+    // 第一步：求出线移动最大距离
+    typedef enum : NSUInteger {
+        Left,
+        Right
+    } MovingDirection;
+    MovingDirection direction = movingOffsetX > 0 ? Right : Left; // 移动方向
+    NSUInteger targetBarItemIndex;
+    if (direction == Right) {
+        targetBarItemIndex = _currentTabSelected + 1;
     } else {
-        //连续拖动可能超过总长的情况需要拦截
-        if (isContinueDragging) {
-            if (movedFloat > self.width - (self.tabMargin + textGap + self.selectedLine.width)) {
-                selectedLineNewX = self.width - (self.tabMargin + textGap + self.selectedLine.width);
-            } else if (movedFloat < self.tabMargin + textGap) {
-                selectedLineNewX = self.tabMargin + textGap;
-            } else {
-                selectedLineNewX = movedFloat;
-            }
-        } else {
-            //无拦截移动
-            selectedLineNewX = movedFloat;
-        }
+        movingOffsetX = -movingOffsetX;
+        targetBarItemIndex = _currentTabSelected - 1;
     }
-    [self.selectedLine setFrame:CGRectMake(selectedLineNewX,
-                                           self.selectedLine.frame.origin.y,
-                                           self.selectedLine.frame.size.width,
-                                           self.selectedLine.frame.size.height)];
 
+    if (targetBarItemIndex < 0 || targetBarItemIndex > _tabButtons.count) {
+        return;
+    }
+    UIButton *currentSelectedBarItemBtn = _tabButtons[_currentTabSelected];
+    UIButton *targetBarItemBtn = _tabButtons[targetBarItemIndex];
+    selectedLineMaxMovedFloat = targetBarItemBtn.centerX - currentSelectedBarItemBtn.centerX;
+
+    // 第二步：求出线移动的距离
+    selectedLineMovedFloat = (movingOffsetX / _bodyScrollView.width) * selectedLineMaxMovedFloat;
+
+    // 第三步: 改变线的CenterX
+    CGFloat selectedLineOriginCenterX = self.selectedLineOffsetXBeforeMoving + self.selectedLine.width / 2;
+    [self.selectedLine setCenterX:selectedLineOriginCenterX + selectedLineMovedFloat];
 }
 
 - (void)updaTetabViewContentOffset{
     CGFloat leftmost = _tabView.centerX; // 最左边
     CGFloat rightmost = _tabView.contentSize.width - _tabView.centerX; // 最右边
+    CGFloat tabViewContentOffsetX;
 
     if (_selectedLine.centerX < leftmost || _selectedLine.centerX == leftmost) {
-        _startOffsetX = 0;
+        tabViewContentOffsetX = 0;
     } else if (_selectedLine.centerX > rightmost || _selectedLine.centerX == rightmost) {
-        _startOffsetX = _tabView.contentSize.width - _tabView.width;
+        tabViewContentOffsetX = _tabView.contentSize.width - _tabView.width;
     } else {
-        _startOffsetX = _selectedLine.centerX - _tabView.centerX;
+        tabViewContentOffsetX = _selectedLine.centerX - _tabView.centerX;
     }
 
     [UIView animateWithDuration:0.3 animations:^{
-        _tabView.contentOffset = CGPointMake(_startOffsetX, 0);
+        _tabView.contentOffset = CGPointMake(tabViewContentOffsetX, 0);
     }];
 }
 
@@ -260,6 +250,23 @@
 - (void)hideRedDotWithIndex:(NSUInteger)index {
     UIView* redDot = self.tabRedDots[index];
     redDot.hidden = YES;
+}
+
+
+#pragma mark - 获取Bundel资源图片
+/**
+ 获取Bundel资源图片
+
+ @param imgName 图片名称
+ @param bundleName bundle名字
+ @return Img对象
+ */
+- (UIImage *)imageNamed:(NSString *)imgName BundleNamed:(NSString *)bundleName{
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:self.class];
+    NSURL *bundleURL = [[frameworkBundle resourceURL] URLByAppendingPathComponent:bundleName];
+    NSBundle *resourceBundle = [NSBundle bundleWithURL:bundleURL];
+    UIImage *image = [UIImage imageNamed:imgName inBundle:resourceBundle compatibleWithTraitCollection:nil];
+    return image;
 }
 
 
@@ -290,7 +297,7 @@
         CGFloat movingOffsetX = scrollView.contentOffset.x - _startOffsetX;
         if (_isUseDragging) {
             //tab处理事件待完成
-            [self moveSelectedLineByScrollWithOffsetX:movingOffsetX];
+             [self moveSelectedLineByScrollWithOffsetX:movingOffsetX];
         }
     }
 }
@@ -463,22 +470,6 @@
         self.viewsArray = [[NSMutableArray alloc] init];
     }
     return _viewsArray;
-}
-
-
-/**
- 获取Bundel资源图片
-
- @param imgName 图片名称
- @param bundleName bundle名字
- @return Img对象
- */
-- (UIImage *)imageNamed:(NSString *)imgName BundleNamed:(NSString *)bundleName{
-    NSBundle *frameworkBundle = [NSBundle bundleForClass:self.class];
-    NSURL *bundleURL = [[frameworkBundle resourceURL] URLByAppendingPathComponent:bundleName];
-    NSBundle *resourceBundle = [NSBundle bundleWithURL:bundleURL];
-    UIImage *image = [UIImage imageNamed:imgName inBundle:resourceBundle compatibleWithTraitCollection:nil];
-    return image;
 }
 
 @end
