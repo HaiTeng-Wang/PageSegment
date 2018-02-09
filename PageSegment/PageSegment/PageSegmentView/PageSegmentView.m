@@ -436,16 +436,19 @@
 
 - (UIColor *)tabButtonTitleColorForNormal {
     if (!_tabButtonTitleColorForNormal) {
-        self.tabButtonTitleColorForNormal = [UIColor blackColor];
+        self.tabButtonTitleColorForNormal = [UIColor colorWithRed:142/255.0
+                                                            green:142/255.0
+                                                             blue:142/255.0
+                                                            alpha:1];
     }
     return _tabButtonTitleColorForNormal;
 }
 
 - (UIColor *)tabButtonTitleColorForSelected {
     if (!_tabButtonTitleColorForSelected) {
-        self.tabButtonTitleColorForSelected = [UIColor colorWithRed:58/255.0
-                                                              green:161/255.0
-                                                               blue:219/255.0
+        self.tabButtonTitleColorForSelected = [UIColor colorWithRed:61/255.0
+                                                              green:170/255.0
+                                                               blue:253/255.0
                                                               alpha:1];
     }
     return _tabButtonTitleColorForSelected;
