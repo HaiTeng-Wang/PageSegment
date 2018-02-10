@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) BodyScrollView *bodyScrollView;
 @property (nonatomic, strong) UIScrollView   *tabView;
-@property (nonatomic, strong) UIImageView    *shadowImgView;
+@property (nonatomic, strong) UIView         *bottomLine;
 @property (nonatomic, strong) UIView         *selectedLine;
 
 @property (nonatomic, strong) NSMutableArray *viewsArray;
@@ -107,8 +107,11 @@
     //tabView
     [self.tabView setBackgroundColor:self.tabBackgroundColor];
 
-    // fix：真机加载不到Bundle中资源图片。 date：20170816
-    self.shadowImgView.image = [self imageNamed:@"shadowImg" BundleNamed:@"PageSegmentView.bundle"];
+    //bottomLine
+    self.bottomLine.backgroundColor = [UIColor colorWithRed:240/255.0
+                                                      green:240/255.0
+                                                       blue:240/255.0
+                                                      alpha:1];
 
     _isBuildUI = YES;
 
@@ -370,12 +373,12 @@
     return _selectedLine;
 }
 
--(UIImageView *)shadowImgView{
-    if (!_shadowImgView) {
-        self.shadowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,self.tabView.height,self.width,10)];
-        [self addSubview:_shadowImgView];
+- (UIView *)bottomLine {
+    if (!_bottomLine) {
+        self.bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0,self.tabView.height-0.5,self.width,0.5)];
+        [self addSubview:_bottomLine];
     }
-    return _shadowImgView;
+    return _bottomLine;
 }
 
 - (CGFloat)selectedLineHeight{
