@@ -19,7 +19,6 @@
 		5A53EAA71F3F4CAA0064D702 /* TableChildExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A53EAA31F3F4CAA0064D702 /* TableChildExampleViewController.m */; };
 		5A53EAA81F3F4CAA0064D702 /* ViewChildExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A53EAA51F3F4CAA0064D702 /* ViewChildExampleViewController.m */; };
 		5A53EAAC1F3F4D9A0064D702 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A53EAAB1F3F4D9A0064D702 /* UIViewAdditions.m */; };
-		5A53EAAE1F3F4E3F0064D702 /* PageSegmentView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A53EAAD1F3F4E3F0064D702 /* PageSegmentView.bundle */; };
 		5A53EAB11F3F4E7E0064D702 /* BodyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A53EAB01F3F4E7E0064D702 /* BodyScrollView.m */; };
 		5A53EAB41F3F4ED80064D702 /* PageSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A53EAB31F3F4ED80064D702 /* PageSegmentView.m */; };
 /* End PBXBuildFile section */
@@ -47,7 +46,6 @@
 		5A53EAA91F3F4D7C0064D702 /* PagerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagerHeader.h; sourceTree = "<group>"; };
 		5A53EAAA1F3F4D9A0064D702 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		5A53EAAB1F3F4D9A0064D702 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
-		5A53EAAD1F3F4E3F0064D702 /* PageSegmentView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PageSegmentView.bundle; sourceTree = "<group>"; };
 		5A53EAAF1F3F4E7E0064D702 /* BodyScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyScrollView.h; sourceTree = "<group>"; };
 		5A53EAB01F3F4E7E0064D702 /* BodyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyScrollView.m; sourceTree = "<group>"; };
 		5A53EAB21F3F4ED80064D702 /* PageSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSegmentView.h; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 		5A53EA971F3F4C630064D702 /* PageSegmentView */ = {
 			isa = PBXGroup;
 			children = (
-				5A53EAAD1F3F4E3F0064D702 /* PageSegmentView.bundle */,
 				5A53EAB21F3F4ED80064D702 /* PageSegmentView.h */,
 				5A53EAB31F3F4ED80064D702 /* PageSegmentView.m */,
 				5A53EAAF1F3F4E7E0064D702 /* BodyScrollView.h */,
@@ -201,7 +198,6 @@
 				5A53EA8C1F3F4BC00064D702 /* Assets.xcassets in Resources */,
 				5A53EA8A1F3F4BC00064D702 /* Main.storyboard in Resources */,
 				5A53EA9F1F3F4C7E0064D702 /* PostCellTableViewCell.xib in Resources */,
-				5A53EAAE1F3F4E3F0064D702 /* PageSegmentView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +380,7 @@
 				5A53EA951F3F4BC00064D702 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
