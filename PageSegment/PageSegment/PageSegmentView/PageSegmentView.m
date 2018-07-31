@@ -143,7 +143,7 @@
         _tabView.contentSize = CGSizeMake(_tabViewContentSizeWidth, self.tabFrameHeight);
         for (int i = 0; i < [self.viewsArray count]; i++) {
             UIViewController* vc = self.viewsArray[i];
-            vc.view.frame = CGRectMake(self.bodyScrollView.width * i, self.tabFrameHeight, self.bodyScrollView.width, self.bodyScrollView.height - self.tabFrameHeight);
+            vc.view.frame = CGRectMake(self.bodyScrollView.width * i, 0, self.bodyScrollView.width, self.bodyScrollView.height);
         }
     }
 }
@@ -334,7 +334,7 @@
  */
 - (BodyScrollView*)bodyScrollView {
     if (!_bodyScrollView) {
-        self.bodyScrollView = [[BodyScrollView alloc] initWithFrame:CGRectMake(0,_tabFrameHeight,self.width,self.height - _tabFrameHeight)];
+        self.bodyScrollView = [[BodyScrollView alloc] initWithFrame:CGRectMake(0,self.tabFrameHeight,self.width,self.height - self.tabFrameHeight)];
         _bodyScrollView.delegate = self;
         _bodyScrollView.pagingEnabled = YES;
         _bodyScrollView.userInteractionEnabled = YES;

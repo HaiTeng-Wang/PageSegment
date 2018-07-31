@@ -41,7 +41,7 @@ Installation with CocoaPods
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'PageSegmentView', '~> 1.0.2'
+pod 'PageSegmentView', '~> 1.0.6'
 end
 ```
 
